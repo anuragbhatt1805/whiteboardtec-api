@@ -1,7 +1,6 @@
 from django.contrib import admin
 from Gallery.models import Gallery
 
-
 class GalleryAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
     list_display = ('caption', 'created_at')

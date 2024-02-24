@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'User',
     'Posts',
     'Gallery',
+    'Connect',
 ]
 
 MIDDLEWARE = [
