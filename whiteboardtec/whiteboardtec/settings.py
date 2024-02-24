@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'Posts',
     'Gallery',
     'Connect',
+    'Career',
 ]
 
 MIDDLEWARE = [
