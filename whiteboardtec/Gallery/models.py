@@ -12,6 +12,7 @@ class Gallery(models.Model):
     caption = models.CharField(max_length=100, blank=True, null=True)
     image = models.ImageField(upload_to=GalleryPic)
     created_at = models.DateTimeField(auto_now_add=True)
+    objects = models.Manager()
 
     def __str__(self):
         return self.caption
