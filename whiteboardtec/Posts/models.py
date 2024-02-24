@@ -3,10 +3,10 @@ import os, uuid
 
 
 def PostPic(instance, filepath):
-    "Function for Profile Picture"
+    "Function for Post Picture"
     ext = os.path.splitext(filepath)[1]
     filename = f"{uuid.uuid4()}{ext}"
-    return os.path.join('blog', filename)
+    return os.path.join('post', filename)
 
 
 class Post(models.Model):

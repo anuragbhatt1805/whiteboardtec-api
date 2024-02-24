@@ -5,7 +5,7 @@ from Posts.models import Post
 class PostAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
     list_display = ('title', 'is_active', 'created_at')
-    list_filter = ('is_active',)
+    list_filter = ('is_active', 'created_at')
     search_fields = ('title', 'content',)
     fieldsets = (
         (
