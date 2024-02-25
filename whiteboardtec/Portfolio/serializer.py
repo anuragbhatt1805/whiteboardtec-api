@@ -17,6 +17,17 @@ class ImageAdminSerializer(serializers.ModelSerializer):
             'caption': {'required': False},
         }
 
+    def save(self, portfolio, **kwargs):
+        image = Image.objects.create(
+            caption=self.validated_data['caption'] if 'caption' in self.validated_data else None,
+            image=self.validated_data['image']
+        )
+        image.save()
+        portfolio.image.add(image)
+        portfolio.save()
+        return image
+
+
 class PortfolioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Portfolio

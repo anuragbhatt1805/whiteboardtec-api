@@ -32,16 +32,12 @@ class PortfolioViewSet(ModelViewSet):
             return Response(serializer.data)
 
     @action(detail=True, methods=['post'])
-    def add_image(self, request):
+    def add_image(self, request, pk=None):
         if request.user.is_authenticated:
             portfolio = self.get_object()
-            image = Image.objects.create(
-                caption=request.data['caption'] if 'caption' in request.data else None,
-                image= request.data['image']
-            )
-            image.save()
-            portfolio.image.add(image)
-            portfolio.save()
+            serializer = ImageAdminSerializer(data=request.data)
+            serializer.is_valid(raise_exception=True)
+            serializer.save(portfolio=portfolio)
             return Response({'message': 'Image added successfully', "status":status.HTTP_201_CREATED})
 
     @action(detail=True, methods=['post'])
