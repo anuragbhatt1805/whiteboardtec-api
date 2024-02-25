@@ -27,6 +27,7 @@ urlpatterns = [
     path('gallery/', include('Gallery.urls')),
     path('connection/', include('Connect.urls')),
     path('work/', include('Portfolio.urls')),
+    path('career/', include('Career.urls')),
 ]
 
 if settings.DEBUG:
