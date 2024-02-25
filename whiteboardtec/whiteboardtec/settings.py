@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'Connect',
     'Career',
     'Services',
+    'Portfolio',
 ]
 
 MIDDLEWARE = [
