@@ -52,54 +52,22 @@ class SocialAdminSerializer(serializers.ModelSerializer):
         read_only_fields = ['id']
 
 class ConnectSerializer(serializers.ModelSerializer):
+    contact = ContactSerializer(many=True, required=False)
+    email = EmailSerializer(many=True, required=False)
+    address = AddressSerializer(many=True, required=False)
+    social = SocialSerializer(many=True, required=False)
 
     class Meta:
         model = Connect
         fields = ['contact', 'email', 'address', 'social']
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        contact = []
-        email = []
-        address = []
-        social = []
-        for item in representation['contact']:
-            contact.append(ContactSerializer(Contact.objects.get(id=item)).data)
-        for item in representation['email']:
-            email.append(EmailSerializer(Email.objects.get(id=item)).data)
-        for item in representation['address']:
-            address.append(AddressSerializer(Address.objects.get(id=item)).data)
-        for item in representation['social']:
-            social.append(SocialSerializer(Social.objects.get(id=item)).data)
-        representation['contact'] = contact
-        representation['email'] = email
-        representation['address'] = address
-        representation['social'] = social
-        return representation
+        
 
 class ConnectAdminSerializer(serializers.ModelSerializer):
-
+    contact = ContactAdminSerializer(many=True, required=False)
+    email = EmailAdminSerializer(many=True, required=False)
+    address = AddressAdminSerializer(many=True, required=False)
+    social = SocialAdminSerializer(many=True, required=False)
     class Meta:
         model = Connect
         fields = '__all__'
         read_only_fields = ['id']
-
-    def to_representation(self, instance):
-        representation = super().to_representation(instance)
-        contact = []
-        email = []
-        address = []
-        social = []
-        for item in representation['contact']:
-            contact.append(ContactAdminSerializer(Contact.objects.get(id=item)).data)
-        for item in representation['email']:
-            email.append(EmailAdminSerializer(Email.objects.get(id=item)).data)
-        for item in representation['address']:
-            address.append(AddressAdminSerializer(Address.objects.get(id=item)).data)
-        for item in representation['social']:
-            social.append(SocialAdminSerializer(Social.objects.get(id=item)).data)
-        representation['contact'] = contact
-        representation['email'] = email
-        representation['address'] = address
-        representation['social'] = social
-        return representation
