@@ -1,10 +1,10 @@
 from rest_framework.routers import DefaultRouter
 from django.urls import include, path
-from Services.views import ServiceViewSet
+from Posts.views import PostViewSet
 
 
 router = DefaultRouter()
-router.register('images', ServiceViewSet, basename='services')
+router.register('event', PostViewSet, basename='posts')
 
 urlpatterns = [
     path('', include(router.urls)),
