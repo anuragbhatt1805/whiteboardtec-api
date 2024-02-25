@@ -25,6 +25,7 @@ urlpatterns = [
     path('service/', include('Services.urls')),
     path('post/', include('Posts.urls')),
     path('gallery/', include('Gallery.urls')),
+    path('connection/', include('Connect.urls')),
 ]
 
 if settings.DEBUG:
